@@ -8,6 +8,12 @@ import Error from './error'
 const AvatarUpload = () => {
   const [selectedFile, setSelectedFile] = useState<File>()
   const [error, setError] = useState(false)
+  const fileInputRef = useRef<HTMLInputElement>(null)
+
+  const resetState = () => {
+    setError(false)
+    setSelectedFile(undefined)
+  }
 
   const isValidFile = (file: File) => {
     const validTypes = ['image/jpeg', 'image/jpg', 'image/png']
@@ -17,7 +23,7 @@ const AvatarUpload = () => {
     return true
   }
 
-  const handleFiles = (file: File) => {
+  const handleFile = (file: File) => {
     if (isValidFile(file)) {
       setSelectedFile(file)
     }
@@ -39,7 +45,7 @@ const AvatarUpload = () => {
     e.preventDefault()
     const file = e.dataTransfer.files[0]
     if (file) {
-      handleFiles(file)
+      handleFile(file)
     }
   }
 
@@ -52,8 +58,6 @@ const AvatarUpload = () => {
     return `url(${imageURL})`
   }
 
-  const fileInputRef = useRef<HTMLInputElement>(null)
-
   const fileInputClicked = () => {
     if (selectedFile || error) return
     const node = fileInputRef.current
@@ -64,18 +68,13 @@ const AvatarUpload = () => {
     if (fileInputRef && fileInputRef.current) {
       const node = fileInputRef.current.files
       if (node?.length) {
-        handleFiles(node[0])
+        handleFile(node[0])
       }
     }
   }
 
-  const tryAgain = () => {
-    setError(false)
-    setSelectedFile(undefined)
-  }
-
   const renderComponent = () => {
-    if (error) return <Error tryAgain={tryAgain} />
+    if (error) return <Error tryAgain={resetState} />
 
     if (!selectedFile)
       return (
