@@ -15,14 +15,8 @@ const AvatarUpload = () => {
     return true
   }
 
-  const handleFiles = (files: FileList) => {
-    for (let i = 0; i < 1; i++) {
-      if (validateFile(files[i])) {
-        setSelectedFile(files[i])
-      } else {
-        setError(true)
-      }
-    }
+  const handleFiles = (file: File) => {
+    validateFile(file) ? setSelectedFile(file) : setError(true)
   }
 
   const dragOver = (e: DragEvent) => {
@@ -39,9 +33,9 @@ const AvatarUpload = () => {
 
   const fileDrop = (e: DragEvent) => {
     e.preventDefault()
-    const files = e.dataTransfer.files
-    if (files.length) {
-      handleFiles(files)
+    const file = e.dataTransfer.files[0]
+    if (file) {
+      handleFiles(file)
     }
   }
 
