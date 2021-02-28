@@ -69,8 +69,13 @@ const AvatarUpload = () => {
     }
   }
 
+  const tryAgain = () => {
+    setError(false)
+    setSelectedFile(undefined)
+  }
+
   const renderComponent = () => {
-    if (error) return <Error tryAgain={() => alert('clicked')} />
+    if (error) return <Error tryAgain={tryAgain} />
 
     if (!selectedFile)
       return (
