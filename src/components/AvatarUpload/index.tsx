@@ -1,6 +1,6 @@
-import React, { DragEvent, useState } from 'react'
+import React, { DragEvent, useState, useRef } from 'react'
 
-import { Dropzone } from './styles'
+import { Dropzone, FileInput } from './styles'
 import EmptyState from './initial'
 import Image from './image'
 
@@ -8,15 +8,18 @@ const AvatarUpload = () => {
   const [selectedFile, setSelectedFile] = useState<File>()
   const [error, setError] = useState(false)
 
-  const validateFile = (file: File) => {
+  const isValidFile = (file: File) => {
     const validTypes = ['image/jpeg', 'image/jpg', 'image/png']
 
-    if (!validTypes.includes(file.type)) return false
+    if (!validTypes.includes(file.type)) setError(true)
+
     return true
   }
 
   const handleFiles = (file: File) => {
-    validateFile(file) ? setSelectedFile(file) : setError(true)
+    if (isValidFile(file)) {
+      setSelectedFile(file)
+    }
   }
 
   const dragOver = (e: DragEvent) => {
@@ -42,14 +45,27 @@ const AvatarUpload = () => {
   const createURL = (file: File) => URL.createObjectURL(file)
 
   const bgImage = () => {
-    if (error) return 'url("images/warning.png")'
+    if (error || !selectedFile) return ''
 
-    if (selectedFile) {
-      const imageURL = createURL(selectedFile)
-      return `url(${imageURL})`
+    const imageURL = createURL(selectedFile)
+    return `url(${imageURL})`
+  }
+
+  const fileInputRef = useRef<HTMLInputElement>(null)
+
+  const fileInputClicked = () => {
+    if (selectedFile || error) return
+    const node = fileInputRef.current
+    node?.click()
+  }
+
+  const filesSelected = () => {
+    if (fileInputRef && fileInputRef.current) {
+      const node = fileInputRef.current.files
+      if (node?.length) {
+        handleFiles(node[0])
+      }
     }
-
-    return ''
   }
 
   return (
@@ -59,8 +75,21 @@ const AvatarUpload = () => {
         onDragEnter={dragEnter}
         onDragLeave={dragLeave}
         onDrop={fileDrop}
+        onClick={fileInputClicked}
       >
-        {!selectedFile ? <EmptyState /> : <Image bgImage={bgImage} />}
+        {!selectedFile ? (
+          <>
+            <EmptyState />
+            <FileInput
+              ref={fileInputRef}
+              type="file"
+              accept="image/png, image/jpeg, image/jpg"
+              onChange={filesSelected}
+            />
+          </>
+        ) : (
+          <Image bgImage={bgImage} error={error} />
+        )}
       </Dropzone>
     </>
   )

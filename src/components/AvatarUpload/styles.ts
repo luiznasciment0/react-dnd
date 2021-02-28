@@ -13,3 +13,7 @@ export const Dropzone = styled.div`
   align-items: center;
   justify-content: center;
 `
+
+export const FileInput = styled.input`
+  display: none;
+`
