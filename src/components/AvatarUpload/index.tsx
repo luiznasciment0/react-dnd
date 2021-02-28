@@ -1,6 +1,6 @@
 import React, { DragEvent, useState } from 'react'
-import { Dropzone } from './styles'
 
+import { Dropzone } from './styles'
 import EmptyState from './initial'
 import Image from './image'
 
@@ -54,7 +54,7 @@ const AvatarUpload = () => {
         onDrop={fileDrop}
       >
         {!selectedFile && <EmptyState />}
-        <Image file={selectedFile} error={error} />
+        <Image error={error} />
       </Dropzone>
     </>
   )
