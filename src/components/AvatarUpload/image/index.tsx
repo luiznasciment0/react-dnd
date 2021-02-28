@@ -4,7 +4,7 @@ import { CroppedImageWrapper } from './styles'
 
 interface Props {
   error?: boolean
-  bgImage: () => string
+  bgImage?: () => string
 }
 
 const Image = ({ bgImage, error }: Props) => {
