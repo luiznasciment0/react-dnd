@@ -14,7 +14,7 @@ const theme = {
   }
 }
 
-type Props = {
+interface Props {
   color?: keyof typeof theme.colors
   size?: keyof typeof theme.sizes
   fontWeight?: 400 | 500
