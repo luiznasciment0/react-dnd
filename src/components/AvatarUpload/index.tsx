@@ -1,7 +1,7 @@
 import React, { DragEvent, useState, useRef } from 'react'
 
 import { Dropzone, FileInput } from './styles'
-import EmptyState from './initial'
+import EmptyState from './emptyState'
 import Image from './image'
 import Error from './error'
 
