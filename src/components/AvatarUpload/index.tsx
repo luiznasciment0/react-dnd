@@ -12,7 +12,7 @@ const AvatarUpload = () => {
   const isValidFile = (file: File) => {
     const validTypes = ['image/jpeg', 'image/jpg', 'image/png']
 
-    if (!validTypes.includes(file.type)) setError(true)
+    if (!validTypes.includes(file.type)) return setError(true)
 
     return true
   }
