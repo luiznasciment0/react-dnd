@@ -7,6 +7,7 @@ export const Wrapper = styled.div`
 
 interface CroppedImageProps {
   backgroundImage?: () => string
+  error?: boolean
 }
 
 export const CroppedImageWrapper = styled.div<CroppedImageProps>`
@@ -14,8 +15,8 @@ export const CroppedImageWrapper = styled.div<CroppedImageProps>`
   height: 11.3rem;
   border-radius: 7.25rem;
   background: #c3cbd5;
-  ${({ backgroundImage }) => css`
-    background-image: ${backgroundImage};
+  ${({ backgroundImage, error }) => css`
+    background-image: ${error ? 'url("images/warning.png")' : backgroundImage};
   `}
   background-repeat: no-repeat;
   background-position: center;
