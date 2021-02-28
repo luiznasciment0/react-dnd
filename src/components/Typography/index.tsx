@@ -20,6 +20,8 @@ interface Props {
   fontWeight?: 400 | 500
   lineHeight?: string | number
   level?: 1 | 2 | 3 | 4 | 5 | 6
+  underline?: boolean
+  pointer?: boolean
 }
 
 const Typography = styled('h1').attrs<Props>(({ level }) => ({
@@ -29,12 +31,18 @@ const Typography = styled('h1').attrs<Props>(({ level }) => ({
     color = 'primaryGray',
     size = 'normal',
     fontWeight = 400,
-    lineHeight = '2.52rem'
+    lineHeight = '2.52rem',
+    underline = false,
+    pointer = false
   }) => css`
     font-size: ${theme.sizes[size]};
     color: ${theme.colors[color]};
     font-weight: ${fontWeight};
     line-height: ${lineHeight};
+    cursor: ${pointer ? 'pointer' : 'text'};
+    :hover {
+      text-decoration-line: ${underline ? 'underline' : 'none'};
+    }
   `}
 `
 
