@@ -3,6 +3,7 @@ import React, { DragEvent, useState, useRef } from 'react'
 import { Dropzone, FileInput } from './styles'
 import EmptyState from './initial'
 import Image from './image'
+import Error from './error'
 
 const AvatarUpload = () => {
   const [selectedFile, setSelectedFile] = useState<File>()
@@ -68,6 +69,25 @@ const AvatarUpload = () => {
     }
   }
 
+  const renderComponent = () => {
+    if (error) return <Error tryAgain={() => alert('clicked')} />
+
+    if (!selectedFile)
+      return (
+        <>
+          <EmptyState />
+          <FileInput
+            ref={fileInputRef}
+            type="file"
+            accept="image/png, image/jpeg, image/jpg"
+            onChange={filesSelected}
+          />
+        </>
+      )
+
+    return <Image bgImage={bgImage} />
+  }
+
   return (
     <>
       <Dropzone
@@ -77,19 +97,7 @@ const AvatarUpload = () => {
         onDrop={fileDrop}
         onClick={fileInputClicked}
       >
-        {!selectedFile ? (
-          <>
-            <EmptyState />
-            <FileInput
-              ref={fileInputRef}
-              type="file"
-              accept="image/png, image/jpeg, image/jpg"
-              onChange={filesSelected}
-            />
-          </>
-        ) : (
-          <Image bgImage={bgImage} error={error} />
-        )}
+        {renderComponent()}
       </Dropzone>
     </>
   )
