@@ -45,6 +45,19 @@ const AvatarUpload = () => {
     }
   }
 
+  const createURL = (file: File) => URL.createObjectURL(file)
+
+  const bgImage = () => {
+    if (error) return 'url("images/warning.png")'
+
+    if (selectedFile) {
+      const imageURL = createURL(selectedFile)
+      return `url(${imageURL})`
+    }
+
+    return ''
+  }
+
   return (
     <>
       <Dropzone
@@ -53,8 +66,7 @@ const AvatarUpload = () => {
         onDragLeave={dragLeave}
         onDrop={fileDrop}
       >
-        {!selectedFile && <EmptyState />}
-        <Image error={error} />
+        {!selectedFile ? <EmptyState /> : <Image bgImage={bgImage} />}
       </Dropzone>
     </>
   )

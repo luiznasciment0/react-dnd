@@ -7,4 +7,6 @@ export default {
   component: Image
 } as Meta
 
-export const Default: Story = () => <Image />
+export const Default: Story = () => (
+  <Image bgImage={() => `url('images/warning.png')`} />
+)

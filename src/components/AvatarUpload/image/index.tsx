@@ -5,14 +5,10 @@ import { CroppedImageWrapper } from './styles'
 interface Props {
   file?: File
   error?: boolean
+  bgImage: () => string
 }
 
-const Image = ({ error = false }: Props) => {
-  const bgImage = () => {
-    if (error) return 'url("images/warning.png")'
-    return ''
-  }
-
+const Image = ({ bgImage }: Props) => {
   return <CroppedImageWrapper backgroundImage={bgImage} />
 }
 
