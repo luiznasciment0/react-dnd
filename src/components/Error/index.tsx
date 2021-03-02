@@ -1,8 +1,9 @@
 import React from 'react'
 
-import { Wrapper, ErrorMessageWrapper } from './styles'
+import { Wrapper, ErrorMessageWrapper, Close } from './styles'
 import Image from '../Image'
 import Typography from 'components/Typography'
+import CloseIcon from 'assets/closeicon.png'
 
 interface Props {
   tryAgain: () => void
@@ -27,6 +28,7 @@ const Error = ({ tryAgain }: Props) => (
         Try again
       </Typography>
     </ErrorMessageWrapper>
+    <Close src={CloseIcon} onClick={tryAgain} />
   </Wrapper>
 )
 
