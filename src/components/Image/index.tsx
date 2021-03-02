@@ -1,14 +1,23 @@
-import React from 'react'
+import React, { memo } from 'react'
 
-import { CroppedImageWrapper } from './styles'
+import { CroppedImageWrapper, Wrapper } from './styles'
 
 interface Props {
   error?: boolean
   bgImage?: () => string
+  zoom?: number
 }
 
-const Image = ({ bgImage, error }: Props) => {
-  return <CroppedImageWrapper backgroundImage={bgImage} error={error} />
+const Image = ({ bgImage, error, zoom }: Props) => {
+  return (
+    <Wrapper>
+      <CroppedImageWrapper
+        backgroundImage={bgImage}
+        error={error}
+        zoom={zoom}
+      />
+    </Wrapper>
+  )
 }
 
-export default Image
+export default memo(Image)

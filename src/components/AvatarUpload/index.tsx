@@ -2,8 +2,8 @@ import React, { DragEvent, useState, useRef } from 'react'
 
 import { Dropzone, FileInput } from './styles'
 import EmptyState from '../EmptyState'
-import Image from '../Image'
 import Error from '../Error'
+import CropImage from '../CropImage'
 
 const AvatarUpload = () => {
   const [selectedFile, setSelectedFile] = useState<File>()
@@ -89,7 +89,7 @@ const AvatarUpload = () => {
         </>
       )
 
-    return <Image bgImage={bgImage} />
+    return <CropImage bgImage={bgImage} />
   }
 
   return (

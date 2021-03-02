@@ -21,7 +21,7 @@ const CropImage = ({ bgImage }: Props) => {
 
   return (
     <Wrapper>
-      <Image bgImage={bgImage} />
+      <Image bgImage={bgImage} zoom={value} />
       <ErrorMessageWrapper>
         <Typography
           level={1}
@@ -35,6 +35,8 @@ const CropImage = ({ bgImage }: Props) => {
           <Slider
             onChange={handleSliderChange}
             value={value}
+            min={1}
+            max={10}
             aria-labelledby="slider"
           />
         </SliderWrapper>
