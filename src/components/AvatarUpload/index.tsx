@@ -1,9 +1,9 @@
 import React, { DragEvent, useState, useRef } from 'react'
 
-import { Dropzone, FileInput } from './styles'
-import EmptyState from '../EmptyState'
-import Error from '../Error'
-import CropImage from '../CropImage'
+import { Dropzone } from './styles'
+import EmptyState from 'components/EmptyState'
+import Error from 'components/Error'
+import UpdateImage from 'components/UdpateImage'
 
 const AvatarUpload = () => {
   const [selectedFile, setSelectedFile] = useState<File>()
@@ -78,18 +78,17 @@ const AvatarUpload = () => {
 
     if (!selectedFile)
       return (
-        <>
-          <EmptyState />
-          <FileInput
-            ref={fileInputRef}
-            type="file"
-            accept="image/png, image/jpeg, image/jpg"
-            onChange={filesSelected}
-          />
-        </>
+        <EmptyState inputRef={fileInputRef} filesSelected={filesSelected} />
       )
 
-    return <CropImage bgImage={bgImage} />
+    return (
+      <UpdateImage
+        bgImage={bgImage}
+        reset={resetState}
+        inputRef={fileInputRef}
+        filesSelected={filesSelected}
+      />
+    )
   }
 
   return (

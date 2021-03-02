@@ -11,7 +11,3 @@ export const Dropzone = styled.div`
   flex-direction: column;
   justify-content: center;
 `
-
-export const FileInput = styled.input`
-  display: none;
-`
