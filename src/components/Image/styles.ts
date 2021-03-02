@@ -10,7 +10,6 @@ export const Wrapper = styled.div`
 interface CroppedImageProps {
   backgroundImage?: () => string
   error?: boolean
-  zoom?: number
 }
 
 export const CroppedImageWrapper = styled.div<CroppedImageProps>`
@@ -18,10 +17,9 @@ export const CroppedImageWrapper = styled.div<CroppedImageProps>`
   width: 11.3rem;
   border-radius: 7.25rem;
   background: #c3cbd5;
-  ${({ backgroundImage, error, zoom }) => css`
+  ${({ backgroundImage, error }) => css`
     background-image: ${error ? 'url("images/warning.png")' : backgroundImage};
-    transform: scale(${zoom ? 1 + zoom / 10 : 1});
-    transition: all 0.25s;
+    transition: all 0.15s;
   `}
   background-repeat: no-repeat;
   background-position: center;
