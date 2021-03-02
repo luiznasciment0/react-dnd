@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { Wrapper, ErrorMessageWrapper } from './styles'
-import Image from '../image'
+import Image from '../Image'
 import Typography from 'components/Typography'
 
 interface Props {

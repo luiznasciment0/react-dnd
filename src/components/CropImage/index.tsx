@@ -2,7 +2,7 @@ import React, { ChangeEvent, useState } from 'react'
 import Slider from '@material-ui/core/Slider'
 
 import { Wrapper, ErrorMessageWrapper, SliderWrapper } from './styles'
-import Image from '../image'
+import Image from '../Image'
 import Typography from 'components/Typography'
 
 interface Props {

@@ -1,9 +1,9 @@
 import React, { DragEvent, useState, useRef } from 'react'
 
 import { Dropzone, FileInput } from './styles'
-import EmptyState from './emptyState'
-import Image from './image'
-import Error from './error'
+import EmptyState from '../EmptyState'
+import Image from '../Image'
+import Error from '../Error'
 
 const AvatarUpload = () => {
   const [selectedFile, setSelectedFile] = useState<File>()
