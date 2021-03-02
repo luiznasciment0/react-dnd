@@ -1,4 +1,11 @@
-import React, { ChangeEvent, memo, useMemo, useState } from 'react'
+import React, {
+  ChangeEvent,
+  memo,
+  useMemo,
+  useState,
+  useRef,
+  useEffect
+} from 'react'
 
 import { Wrapper, TextWrapper } from './styles'
 
@@ -18,6 +25,8 @@ const UpdateImage = ({ bgImage, reset, filesSelected, inputRef }: Props) => {
   const [isSaved, setIsSaved] = useState<boolean>(false)
   const memoizedZoom = useMemo(() => value, [value])
 
+  const imgRef = useRef<HTMLDivElement>(null)
+
   const handleSliderChange = (
     event: ChangeEvent<Record<string, unknown>>,
     newValue: number | number[]
@@ -29,9 +38,16 @@ const UpdateImage = ({ bgImage, reset, filesSelected, inputRef }: Props) => {
     setIsSaved(true)
   }
 
+  useEffect(() => {
+    imgRef.current?.style.setProperty(
+      'transform',
+      `scale(${memoizedZoom ? 1 + memoizedZoom / 10 : 1})`
+    )
+  }, [memoizedZoom])
+
   return (
     <Wrapper>
-      <Image bgImage={bgImage} zoom={memoizedZoom} />
+      <Image bgImage={bgImage} imgRef={imgRef} />
       <TextWrapper>
         {isSaved ? (
           <EmptyState filesSelected={filesSelected} inputRef={inputRef} />
