@@ -7,8 +7,5 @@ export const Wrapper = styled.div`
 
 export const TextWrapper = styled.div`
   margin-left: 3.2rem;
-`
-
-export const SliderWrapper = styled.div`
-  width: 27.6rem;
+  margin-top: 1.9rem;
 `

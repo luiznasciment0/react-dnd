@@ -8,5 +8,8 @@ export default {
 } as Meta
 
 export const Default: Story = () => (
-  <CropImage bgImage={() => `url(/images/warning.png)`} />
+  <CropImage
+    bgImage={() => `url(/images/warning.png)`}
+    reset={() => alert('reset')}
+  />
 )
