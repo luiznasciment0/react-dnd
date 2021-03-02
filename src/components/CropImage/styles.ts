@@ -5,7 +5,7 @@ export const Wrapper = styled.div`
   align-items: center;
 `
 
-export const ErrorMessageWrapper = styled.div`
+export const TextWrapper = styled.div`
   margin-left: 3.2rem;
 `
 

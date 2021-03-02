@@ -1,7 +1,7 @@
-import React, { ChangeEvent, useState } from 'react'
+import React, { ChangeEvent, memo, useMemo, useState } from 'react'
 import Slider from '@material-ui/core/Slider'
 
-import { Wrapper, ErrorMessageWrapper, SliderWrapper } from './styles'
+import { Wrapper, TextWrapper, SliderWrapper } from './styles'
 import Image from '../Image'
 import Typography from 'components/Typography'
 
@@ -11,6 +11,7 @@ interface Props {
 
 const CropImage = ({ bgImage }: Props) => {
   const [value, setValue] = useState<number>(0)
+  const memoizedZoom = useMemo(() => value, [value])
 
   const handleSliderChange = (
     event: ChangeEvent<Record<string, unknown>>,
@@ -21,8 +22,8 @@ const CropImage = ({ bgImage }: Props) => {
 
   return (
     <Wrapper>
-      <Image bgImage={bgImage} zoom={value} />
-      <ErrorMessageWrapper>
+      <Image bgImage={bgImage} zoom={memoizedZoom} />
+      <TextWrapper>
         <Typography
           level={1}
           fontWeight={400}
@@ -40,9 +41,9 @@ const CropImage = ({ bgImage }: Props) => {
             aria-labelledby="slider"
           />
         </SliderWrapper>
-      </ErrorMessageWrapper>
+      </TextWrapper>
     </Wrapper>
   )
 }
 
-export default CropImage
+export default memo(CropImage)
