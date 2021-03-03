@@ -34,15 +34,20 @@ const UpdateImage = ({ bgImage, reset, isSaved, save, resetSave }: Props) => {
     setValue(newValue as number)
   }
 
-  useEffect(() => {
+  const setZoom = (zoom?: number) => {
     imgRef.current?.style.setProperty(
       'transform',
-      `scale(${memoizedZoom ? 1 + memoizedZoom / 10 : 1})`
+      `scale(${zoom ? 1 + zoom / 10 : 1})`
     )
+  }
+
+  useEffect(() => {
+    setZoom(memoizedZoom)
   }, [memoizedZoom])
 
   useEffect(() => {
     resetSave()
+    setZoom()
   }, [bgImage, resetSave])
 
   return (
