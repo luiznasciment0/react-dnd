@@ -23,4 +23,5 @@ export const CroppedImageWrapper = styled.div<CroppedImageProps>`
   `}
   background-repeat: no-repeat;
   background-position: center;
+  background-size: cover;
 `
