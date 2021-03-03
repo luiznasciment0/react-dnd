@@ -1,4 +1,4 @@
-import React, { DragEvent, useState, useRef } from 'react'
+import React, { DragEvent, useState, useRef, useCallback } from 'react'
 
 import { Dropzone } from './styles'
 import DropImage from 'components/DropImage'
@@ -20,6 +20,10 @@ const AvatarUpload = () => {
   const save = () => {
     setIsSaved(true)
   }
+
+  const resetSave = useCallback(() => {
+    setIsSaved(false)
+  }, [])
 
   const isValidFile = (file: File) => {
     const validTypes = ['image/jpeg', 'image/jpg', 'image/png']
@@ -57,12 +61,12 @@ const AvatarUpload = () => {
 
   const createURL = (file: File) => URL.createObjectURL(file)
 
-  const bgImage = () => {
+  const bgImage = useCallback(() => {
     if (error || !selectedFile) return ''
 
     const imageURL = createURL(selectedFile)
     return `url(${imageURL})`
-  }
+  }, [error, selectedFile])
 
   const fileInputClicked = () => {
     if (error) return
@@ -91,6 +95,7 @@ const AvatarUpload = () => {
         reset={resetState}
         isSaved={isSaved}
         save={save}
+        resetSave={resetSave}
       />
     )
   }

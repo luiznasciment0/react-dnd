@@ -17,10 +17,11 @@ interface Props {
   bgImage: () => string
   reset: () => void
   save: () => void
+  resetSave: () => void
   isSaved: boolean
 }
 
-const UpdateImage = ({ bgImage, reset, isSaved, save }: Props) => {
+const UpdateImage = ({ bgImage, reset, isSaved, save, resetSave }: Props) => {
   const [value, setValue] = useState<number>(0)
   const memoizedZoom = useMemo(() => value, [value])
 
@@ -39,6 +40,10 @@ const UpdateImage = ({ bgImage, reset, isSaved, save }: Props) => {
       `scale(${memoizedZoom ? 1 + memoizedZoom / 10 : 1})`
     )
   }, [memoizedZoom])
+
+  useEffect(() => {
+    resetSave()
+  }, [bgImage, resetSave])
 
   return (
     <Wrapper>

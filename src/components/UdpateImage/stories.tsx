@@ -12,6 +12,7 @@ export const Default: Story = () => (
     bgImage={() => `url(/images/warning.png)`}
     reset={() => alert('reset')}
     save={() => alert('save')}
+    resetSave={() => console.log('resetSave')}
     isSaved={false}
   />
 )
