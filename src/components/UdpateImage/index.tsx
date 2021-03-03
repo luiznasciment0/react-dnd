@@ -7,7 +7,7 @@ import React, {
   useEffect
 } from 'react'
 
-import { Wrapper, TextWrapper } from './styles'
+import { Wrapper, CropWrapper, DropWrapper } from './styles'
 
 import Image from 'components/Image'
 import Crop from 'components/Crop'
@@ -53,18 +53,20 @@ const UpdateImage = ({ bgImage, reset, isSaved, save, resetSave }: Props) => {
   return (
     <Wrapper>
       <Image bgImage={bgImage} imgRef={imgRef} />
-      <TextWrapper>
-        {isSaved ? (
+      {isSaved ? (
+        <DropWrapper>
           <DropImage />
-        ) : (
+        </DropWrapper>
+      ) : (
+        <CropWrapper>
           <Crop
             sliderChange={handleSliderChange}
             value={value}
             reset={reset}
             save={save}
           />
-        )}
-      </TextWrapper>
+        </CropWrapper>
+      )}
     </Wrapper>
   )
 }

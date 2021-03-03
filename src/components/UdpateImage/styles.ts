@@ -5,7 +5,11 @@ export const Wrapper = styled.div`
   align-items: center;
 `
 
-export const TextWrapper = styled.div`
+export const CropWrapper = styled.div`
   margin-left: 3.2rem;
   margin-top: 1.9rem;
+`
+
+export const DropWrapper = styled.div`
+  margin-left: 5rem;
 `
