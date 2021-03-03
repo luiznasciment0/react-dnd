@@ -17,7 +17,3 @@ export const Image = styled.img`
   width: 1.6rem;
   height: 1.2rem;
 `
-
-export const FileInput = styled.input`
-  display: none;
-`
