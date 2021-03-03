@@ -1,15 +1,17 @@
 import React from 'react'
 import { Story, Meta } from '@storybook/react/types-6-0'
-import CropImage from '.'
+import UpdateImage from '.'
 
 export default {
-  title: 'CropImage',
-  component: CropImage
+  title: 'UpdateImage',
+  component: UpdateImage
 } as Meta
 
 export const Default: Story = () => (
-  <CropImage
+  <UpdateImage
     bgImage={() => `url(/images/warning.png)`}
     reset={() => alert('reset')}
+    save={() => alert('save')}
+    isSaved={false}
   />
 )

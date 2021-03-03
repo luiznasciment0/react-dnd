@@ -11,18 +11,17 @@ import { Wrapper, TextWrapper } from './styles'
 
 import Image from 'components/Image'
 import Crop from 'components/Crop'
-import EmptyState from 'components/EmptyState'
+import DropImage from 'components/DropImage'
 
 interface Props {
   bgImage: () => string
   reset: () => void
-  filesSelected?: () => void
-  inputRef?: React.RefObject<HTMLInputElement>
+  save: () => void
+  isSaved: boolean
 }
 
-const UpdateImage = ({ bgImage, reset, filesSelected, inputRef }: Props) => {
+const UpdateImage = ({ bgImage, reset, isSaved, save }: Props) => {
   const [value, setValue] = useState<number>(0)
-  const [isSaved, setIsSaved] = useState<boolean>(false)
   const memoizedZoom = useMemo(() => value, [value])
 
   const imgRef = useRef<HTMLDivElement>(null)
@@ -32,10 +31,6 @@ const UpdateImage = ({ bgImage, reset, filesSelected, inputRef }: Props) => {
     newValue: number | number[]
   ) => {
     setValue(newValue as number)
-  }
-
-  const save = () => {
-    setIsSaved(true)
   }
 
   useEffect(() => {
@@ -50,7 +45,7 @@ const UpdateImage = ({ bgImage, reset, filesSelected, inputRef }: Props) => {
       <Image bgImage={bgImage} imgRef={imgRef} />
       <TextWrapper>
         {isSaved ? (
-          <EmptyState filesSelected={filesSelected} inputRef={inputRef} />
+          <DropImage />
         ) : (
           <Crop
             sliderChange={handleSliderChange}
