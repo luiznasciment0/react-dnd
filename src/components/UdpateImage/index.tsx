@@ -47,7 +47,7 @@ const UpdateImage = ({ bgImage, reset, isSaved, save, resetSave }: Props) => {
 
   useEffect(() => {
     resetSave()
-    setZoom()
+    setValue(0)
   }, [bgImage, resetSave])
 
   return (
