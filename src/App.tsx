@@ -1,7 +1,7 @@
 import React from 'react'
 
 import Layout from 'layout'
-import AvatarUpload from 'components/AvatarUpload'
+import AvatarUpload from './components/AvatarUpload'
 
 function App() {
   return (
