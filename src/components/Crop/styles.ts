@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const Wrapper2 = styled.div`
+export const Wrapper = styled.div`
   display: flex;
 `
 

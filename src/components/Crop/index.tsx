@@ -1,11 +1,11 @@
 import React, { ChangeEvent } from 'react'
 import Slider from '@material-ui/core/Slider'
 
-import { SliderWrapper, Close, ButtonWrapper, Wrapper2 } from './styles'
+import { SliderWrapper, Close, ButtonWrapper, Wrapper } from './styles'
 
 import CloseIcon from 'assets/closeicon.png'
-import Typography from 'components/Typography'
-import Button from 'components/Button'
+import Typography from '../Typography'
+import Button from '../Button'
 
 interface Props {
   sliderChange: (
@@ -19,7 +19,7 @@ interface Props {
 
 const Crop = ({ sliderChange, value, reset, save }: Props) => {
   return (
-    <Wrapper2>
+    <Wrapper>
       <div>
         <Typography
           level={1}
@@ -29,21 +29,17 @@ const Crop = ({ sliderChange, value, reset, save }: Props) => {
         >
           Crop
         </Typography>
-        <SliderWrapper>
-          <Slider
-            onChange={sliderChange}
-            value={value}
-            min={1}
-            max={10}
-            aria-labelledby="slider"
-          />
+        <SliderWrapper aria-label="Slider">
+          <Slider onChange={sliderChange} value={value} min={1} max={10} />
         </SliderWrapper>
         <ButtonWrapper>
-          <Button action={save}>Save</Button>
+          <Button action={save} ariaLabel="Save">
+            Save
+          </Button>
         </ButtonWrapper>
       </div>
-      <Close src={CloseIcon} onClick={reset} />
-    </Wrapper2>
+      <Close src={CloseIcon} onClick={reset} aria-label="Close" />
+    </Wrapper>
   )
 }
 
