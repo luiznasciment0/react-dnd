@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Wrapper, TextImageWrapper, Image } from './styles'
 import defaultImage from 'assets/image.png'
-import Typography from 'components/Typography'
+import Typography from '../Typography'
 
 const DropImage = () => (
   <Wrapper>

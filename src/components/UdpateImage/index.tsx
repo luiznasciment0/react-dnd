@@ -9,9 +9,9 @@ import React, {
 
 import { Wrapper, CropWrapper, DropWrapper } from './styles'
 
-import Image from 'components/Image'
-import Crop from 'components/Crop'
-import DropImage from 'components/DropImage'
+import Image from '../Image'
+import Crop from '../Crop'
+import DropImage from '../DropImage'
 
 interface Props {
   bgImage: () => string

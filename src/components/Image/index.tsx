@@ -15,6 +15,7 @@ const Image = ({ bgImage, error, imgRef }: Props) => {
         backgroundImage={bgImage}
         error={error}
         ref={imgRef}
+        aria-label="Image"
       />
     </Wrapper>
   )

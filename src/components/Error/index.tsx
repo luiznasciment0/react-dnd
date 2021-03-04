@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Wrapper, ErrorMessageWrapper, Close } from './styles'
 import Image from '../Image'
-import Typography from 'components/Typography'
+import Typography from '../Typography'
 import CloseIcon from 'assets/closeicon.png'
 
 interface Props {
@@ -24,6 +24,7 @@ const Error = ({ tryAgain }: Props) => (
         underline
         onClick={tryAgain}
         pointer
+        aria-label="Try again"
       >
         Try again
       </Typography>
