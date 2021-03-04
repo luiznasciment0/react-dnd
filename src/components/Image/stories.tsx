@@ -8,5 +8,5 @@ export default {
 } as Meta
 
 export const Default: Story = () => (
-  <Image bgImage={() => `url('images/warning.png')`} />
+  <Image bgImage={() => `url('images/warning.png')`} error />
 )

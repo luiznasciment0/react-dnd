@@ -20,8 +20,8 @@ export const CroppedImageWrapper = styled.div<CroppedImageProps>`
   ${({ backgroundImage, error }) => css`
     background-image: ${error ? 'url("images/warning.png")' : backgroundImage};
     transition: all 0.15s;
+    background-size: ${error ? 'auto' : 'cover'};
   `}
   background-repeat: no-repeat;
   background-position: center;
-  background-size: cover;
 `

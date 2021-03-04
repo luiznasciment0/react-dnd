@@ -16,3 +16,13 @@ export const Default: Story = () => (
     isSaved={false}
   />
 )
+
+export const Saved: Story = () => (
+  <UpdateImage
+    bgImage={() => `url(/images/warning.png)`}
+    reset={() => alert('reset')}
+    save={() => alert('save')}
+    resetSave={() => console.log('resetSave')}
+    isSaved={true}
+  />
+)

@@ -1,10 +1,10 @@
 import React from 'react'
 import { Story, Meta } from '@storybook/react/types-6-0'
-import EmptyState from '.'
+import DropImage from '.'
 
 export default {
-  title: 'EmptyState',
-  component: EmptyState
+  title: 'DropImage',
+  component: DropImage
 } as Meta
 
-export const Default: Story = () => <EmptyState />
+export const Default: Story = () => <DropImage />
