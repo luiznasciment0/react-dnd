@@ -13,7 +13,9 @@ export default {
 } as Meta
 
 export const Default: Story = (args) => (
-  <Button action={() => alert('clicked')}>{args.children}</Button>
+  <Button action={() => alert('clicked')} ariaLabel="Confirm">
+    {args.children}
+  </Button>
 )
 
 Default.args = {
