@@ -1,9 +1,9 @@
 import React, { DragEvent, useState, useRef, useCallback } from 'react'
 
 import { Dropzone } from './styles'
-import DropImage from 'components/DropImage'
-import Error from 'components/Error'
-import UpdateImage from 'components/UdpateImage'
+import DropImage from '../DropImage'
+import Error from '../Error'
+import UpdateImage from '../UdpateImage'
 
 const AvatarUpload = () => {
   const [selectedFile, setSelectedFile] = useState<File>()
@@ -109,6 +109,7 @@ const AvatarUpload = () => {
           type="file"
           accept="image/png, image/jpeg, image/jpg"
           onChange={filesSelected}
+          aria-label="File input"
         />
       )
   }
@@ -121,6 +122,7 @@ const AvatarUpload = () => {
         onDragLeave={dragLeave}
         onDrop={fileDrop}
         onClick={fileInputClicked}
+        aria-labelledby="Drop file zone"
       >
         {renderComponent()}
         {renderInput()}
